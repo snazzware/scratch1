@@ -1,5 +1,6 @@
 
 class McKeeScratchUtils {
+
 	constructor (runtime, extensionId) {
 		// Extension stuff
 		this.runtime = runtime;
@@ -24,13 +25,13 @@ class McKeeScratchUtils {
 					"arguments": {
 						"KEY": {
 							"type": "string",
-							"defaultValue": 0,
+							"defaultValue": 'example',
 						},
 					},
 				},
                 {
 					"opcode": 'setNumberValueByKey',
-					"blockType": "reporter",
+					"blockType": "command",
 					"text": "Save [VALUE] to [KEY]",
 					"arguments": {
 						"KEY": {
@@ -48,11 +49,11 @@ class McKeeScratchUtils {
 	};
 
     getNumberValueByKey({ KEY }) {
-		return 123;
+		return window.localStorage.getItem(KEY);
 	};
 
     setNumberValueByKey({ KEY, VALUE }) {
-		return VALUE;
+		return window.localStorage.setItem(KEY, VALUE);
 	};
 	
 };
