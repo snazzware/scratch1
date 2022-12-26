@@ -21,18 +21,22 @@ class McKeeScratchUtils {
 				{
 					"opcode": 'getNumberValueByKey',
 					"blockType": "reporter",
-					"text": "Load value of [KEY]",
+					"text": "Load value of [KEY] with default [DEFAULT]",
 					"arguments": {
 						"KEY": {
 							"type": "string",
 							"defaultValue": 'example',
+						},
+                        "DEFAULT": {
+							"type": "number",
+							"defaultValue": 0,
 						},
 					},
 				},
                 {
 					"opcode": 'setNumberValueByKey',
 					"blockType": "command",
-					"text": "Save [VALUE] to [KEY]",
+					"text": "Save value [VALUE] to [KEY]",
 					"arguments": {
 						"KEY": {
 							"type": "string",
@@ -48,12 +52,12 @@ class McKeeScratchUtils {
 		};
 	};
 
-    getNumberValueByKey({ KEY }) {
-		return window.localStorage.getItem(KEY);
+    getNumberValueByKey({ KEY, DEFAULT}) {
+		return window.localStorage.getItem('McKeeScratchUtils_Key_' + KEY);
 	};
 
     setNumberValueByKey({ KEY, VALUE }) {
-		return window.localStorage.setItem(KEY, VALUE);
+		return window.localStorage.setItem('McKeeScratchUtils_Key_' + KEY, VALUE);
 	};
 	
 };
